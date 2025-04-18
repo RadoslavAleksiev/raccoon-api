@@ -1,0 +1,9 @@
+# ConfigMap (db-config.yaml)
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+data:
+  DB_HOST: "odc-DBCL01.local.sepa-cyber.com"
+  DB_PORT: "3306"
+  DB_NAME: "raccoon_api"

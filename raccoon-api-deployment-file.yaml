@@ -1,0 +1,32 @@
+# raccoon-api-deployment-file.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: raccoon-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: raccoon-api
+  template:
+    metadata:
+      labels:
+        app: raccoon-api
+    spec:
+      containers:
+      - name: api
+        image: your-registry/raccoon-api:latest
+        envFrom:
+        - secretRef:            # For credentials
+            name: db-credentials
+        - configMapRef:         # For non-sensitive config
+            name: db-config
+        ports:
+        - containerPort: 4000
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
