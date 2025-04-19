@@ -4,6 +4,6 @@ kind: ConfigMap
 metadata:
   name: db-config
 data:
-  DB_HOST: "odc-DBCL01.local.sepa-cyber.com"
+  DB_HOST: "mysql"  # Matches K8S service name
   DB_PORT: "3306"
-  DB_NAME: "raccoon_api"
+  DB_NAME: "raccoon_run_game_leaderboard"
